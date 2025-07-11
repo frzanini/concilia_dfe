@@ -1,20 +1,19 @@
-# Ajuste Gemini 2
 version: 1.0
 runtime: python3
 
 build:
   commands:
-    # Use pre_build para garantir que o pip esteja atualizado antes de instalar as dependências.
-    pre_build:
-      - echo "Starting pre_build commands..."
-      - python -m pip install --upgrade pip # Usar python -m pip é mais robusto
-    # O estágio 'build' para instalar as dependências da aplicação.
+    # Use 'pre-build' com hífen, conforme indicado pelo erro do Bullet.
+    pre-build:
+      - echo "Starting pre-build commands..."
+      - python -m pip install --upgrade pip
+    # O estágio 'build' é reconhecido.
     build:
       - echo "Starting build commands..."
-      - pip install -r requirements.txt # Garanta que requirements.txt está no diretório raiz do projeto
-    # Opcional: post_build se você tiver alguma limpeza ou compilação final.
-    # post_build:
-    #   - echo "Build finished."
+      - pip install -r requirements.txt
+    # Opcional: Se você precisar de comandos pós-construção, use 'post-build' com hífen.
+    post-build:
+      - echo "Build finished."
 
 run:
   command: streamlit run src/app.py --server.port 8080 --server.enableCORS false
