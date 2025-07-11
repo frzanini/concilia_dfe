@@ -1,16 +1,10 @@
 version: 1.0
-# Especifica a versão 3.11 do Python para o App Runner
-runtime: python311
-
+runtime: python311 
 build:
   commands:
-    
-    # O estágio 'build' instala as dependências do seu projeto
     build:
-      - echo "Installing dependencies..."
-      # Instala as dependências listadas no requirements.txt
+      - pip install pipenv
       - pip install -r requirements.txt
-
-run:
-  # O comando 'run' inicia sua aplicação Streamlit
+run: 
+  # command: python app.py
   command: streamlit run src/app.py --server.port 8080 --server.enableCORS false
