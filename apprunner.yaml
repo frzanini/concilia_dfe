@@ -3,13 +3,17 @@ runtime: python3
 
 build:
   commands:
-    # Os comandos para o estágio de build da sua aplicação.
-    # O AWS App Runner, via Bullet, executa isso para preparar o ambiente.
+    # Use pre_build para garantir que o pip esteja atualizado antes de instalar as dependências.
+    pre_build:
+      - echo "Starting pre_build commands..."
+      - python -m pip install --upgrade pip # Usar python -m pip é mais robusto
+    # O estágio 'build' para instalar as dependências da aplicação.
     build:
-      - pip install --upgrade pip
-      - pip install -r requirements.txt
+      - echo "Starting build commands..."
+      - pip install -r requirements.txt # Garanta que requirements.txt está no diretório raiz do projeto
+    # Opcional: post_build se você tiver alguma limpeza ou compilação final.
+    # post_build:
+    #   - echo "Build finished."
 
-# O comando para iniciar sua aplicação Streamlit.
-# O sistema Bullet espera 'run:' para essa configuração, e não 'start:'.
 run:
   command: streamlit run src/app.py --server.port 8080 --server.enableCORS false
