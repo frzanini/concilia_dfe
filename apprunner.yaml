@@ -1,5 +1,6 @@
 version: 1.0
-runtime: python311 # Especifica a versão 3.11 do Python para o App Runner
+# Especifica a versão 3.11 do Python para o App Runner
+runtime: python311
 
 build:
   commands:
