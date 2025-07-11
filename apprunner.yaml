@@ -3,9 +3,9 @@ runtime: python3
 
 build:
   commands:
-    - pip install --upgrade pip
-    - pip install -r requirements.txt
+    build:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
 
-start:
+run:
   command: streamlit run src/app.py --server.port 8080 --server.enableCORS false
-
