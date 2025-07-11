@@ -4,12 +4,12 @@ runtime: python3
 build:
   commands:
     # Os comandos para o estágio de build da sua aplicação.
-    # O AWS App Runner executa isso para preparar o ambiente.
+    # O AWS App Runner, via Bullet, executa isso para preparar o ambiente.
     build:
       - pip install --upgrade pip
       - pip install -r requirements.txt
 
 # O comando para iniciar sua aplicação Streamlit.
-# O App Runner espera 'start:' para essa configuração.
-start:
+# O sistema Bullet espera 'run:' para essa configuração, e não 'start:'.
+run:
   command: streamlit run src/app.py --server.port 8080 --server.enableCORS false
