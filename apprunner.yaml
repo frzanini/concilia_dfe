@@ -1,19 +1,22 @@
 version: 1.0
-runtime: python3
+runtime: python311 # Especifica a versão 3.11 do Python para o App Runner
 
 build:
   commands:
-    # Use 'pre-build' com hífen, conforme indicado pelo erro do Bullet.
+    # O estágio 'pre-build' é ideal para preparar o ambiente antes de instalar as dependências
     pre-build:
       - echo "Starting pre-build commands..."
-    # O estágio 'build' é reconhecido.
+      - pip install --upgrade pip # Atualiza o pip para garantir a instalação correta
+    
+    # O estágio 'build' instala as dependências do seu projeto
     build:
       - echo "Installing dependencies..."
-      - pip install --upgrade pip
-      - pip install -r requirements.txt
-    # Opcional: Se você precisar de comandos pós-construção, use 'post-build' com hífen.
+      - pip install -r requirements.txt # Instala as dependências listadas no requirements.txt
+    
+    # Opcional: Comandos que você queira executar após a construção, mas antes da aplicação iniciar
     post-build:
       - echo "Build finished."
 
 run:
+  # O comando 'run' inicia sua aplicação Streamlit
   command: streamlit run src/app.py --server.port 8080 --server.enableCORS false
