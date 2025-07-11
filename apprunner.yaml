@@ -6,7 +6,7 @@ build:
   commands:
     # O estágio 'pre-build' é ideal para preparar o ambiente antes de instalar as dependências
     pre-build:
-      - echo "Starting pre-build commands..."
+      #- echo "Starting pre-build commands..."
       # Atualiza o pip para garantir a instalação correta
       - pip install --upgrade pip
     
