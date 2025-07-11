@@ -4,21 +4,12 @@ runtime: python311
 
 build:
   commands:
-    # O estágio 'pre-build' é ideal para preparar o ambiente antes de instalar as dependências
-    pre-build:
-      #- echo "Starting pre-build commands..."
-      # Atualiza o pip para garantir a instalação correta
-      - pip install --upgrade pip
     
     # O estágio 'build' instala as dependências do seu projeto
     build:
       - echo "Installing dependencies..."
       # Instala as dependências listadas no requirements.txt
       - pip install -r requirements.txt
-    
-    # Opcional: Comandos que você queira executar após a construção, mas antes da aplicação iniciar
-    post-build:
-      - echo "Build finished."
 
 run:
   # O comando 'run' inicia sua aplicação Streamlit
