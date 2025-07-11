@@ -6,10 +6,10 @@ build:
     # Use 'pre-build' com hífen, conforme indicado pelo erro do Bullet.
     pre-build:
       - echo "Starting pre-build commands..."
-      - python -m pip install --upgrade pip
     # O estágio 'build' é reconhecido.
     build:
-      - echo "Starting build commands..."
+      - echo "Installing dependencies..."
+      - pip install --upgrade pip
       - pip install -r requirements.txt
     # Opcional: Se você precisar de comandos pós-construção, use 'post-build' com hífen.
     post-build:
