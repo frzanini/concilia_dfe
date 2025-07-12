@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # CONFIGURAÇÕES
-REGION="sa-east-1"
+REGION="us-east-1"
 REPO_NAME="concilia-dfe"
 IMAGE_TAG="latest"
 
