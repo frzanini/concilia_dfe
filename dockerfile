@@ -1,19 +1,16 @@
-# Base image
-FROM python:3.12.7-slim
+FROM python:3.11-slim
 
-# Diretório de trabalho
 WORKDIR /app
 
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-COPY requirements.txt .
-
-RUN pip install --upgrade pip
-RUN pip install streamlit pandas openpyxl
-
-COPY src/ ./src/
 
 EXPOSE 8501
-CMD ["streamlit", "run", "src/app.py", "--server.port=8501", "--server.enableCORS=false"]
 
-
-
+CMD ["streamlit", "run", "src/app.py", \
+     "--server.port=8501", \
+     "--server.address=0.0.0.0", \
+     "--server.enableCORS=false", \
+     "--server.enableXsrfProtection=false"]
